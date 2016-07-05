@@ -52,6 +52,13 @@ class ViewController: UIViewController,QBImagePickerControllerDelegate {
             //URL取得の場合
             print(asset_each.description)
             
+            let urlArray = asset_each.description.componentsSeparatedByString("/")
+            
+            let urlArray2 = urlArray[0].componentsSeparatedByString(" ")
+            
+            let assetURL = "assets-library://asset/asset.JPG?id="+urlArray2[2]+"&ext=JPG"
+            print(assetURL)
+            
             //画像表示の場合
             let manager: PHImageManager = PHImageManager()
             manager.requestImageForAsset(asset as! PHAsset,targetSize: CGSizeMake(200, 200),contentMode: .AspectFit,options: nil) { (image, info) -> Void in
